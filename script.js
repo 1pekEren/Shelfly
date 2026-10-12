@@ -41,36 +41,59 @@ hero.addEventListener("mousemove", function(event) {
     }, 1200);
 });
 
-//Kitap arama fonksiyonu
+
+ // Kitap arama ve kategori filtreleme
 
 const searchInput = document.querySelector(".search-box input");
 const bookCards = document.querySelectorAll(".book-card");
+const categoryButtons = document.querySelectorAll(".category-btn");
 
-searchInput.addEventListener("input", function () {
+let selectedCategory = "all";
 
-    const searchText = searchInput.value.toLowerCase();
+function filterBooks() {
+    const searchText = searchInput.value
+        .toLocaleLowerCase("tr-TR")
+        .trim();
 
-    bookCards.forEach(function (book) {
+    bookCards.forEach(function(book) {
+        const bookName = book.querySelector("h3")
+            .textContent.toLocaleLowerCase("tr-TR");
 
-        const bookName = book.querySelector("h3").textContent.toLowerCase();
-        const author = book.querySelector("p").textContent.toLowerCase();
+        const author = book.querySelector(".book-info p")
+            .textContent.toLocaleLowerCase("tr-TR");
 
-        if (
+        const bookCategory = book.dataset.category;
+
+        const matchesSearch =
             bookName.includes(searchText) ||
-            author.includes(searchText)
-        ) {
-            book.style.display = "";
-        } else {
-            book.style.display = "none";
-        }
+            author.includes(searchText);
 
+        const matchesCategory =
+            selectedCategory === "all" ||
+            bookCategory === selectedCategory;
+
+        book.style.display =
+            matchesSearch && matchesCategory ? "" : "none";
     });
+}
 
+searchInput.addEventListener("input", filterBooks);
+
+categoryButtons.forEach(function(button) {
+    button.addEventListener("click", function() {
+        selectedCategory = button.dataset.filter;
+
+        categoryButtons.forEach(function(btn) {
+            btn.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        filterBooks();
+    });
 });
 
 // KATEGORİ FİLTRELEME
-
-const categoryButtons = document.querySelectorAll(".category-btn");
 
 categoryButtons.forEach(function(button) {
 
