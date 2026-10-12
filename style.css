@@ -1,91 +1,521 @@
-body {
+* {
+    box-sizing: border-box;
     margin: 0;
+    padding: 0;
+}
+
+body {
     font-family: Arial, sans-serif;
-    background-color: #f8f5f0;
+    background: #f8f5f0;
     color: #3b302a;
 }
 
-header {
-    background-color: #ffffff;
-    padding: 20px 60px;
+
+/* NAVBAR */
+
+.navbar {
+    height: 80px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+    border-bottom: 1px solid #eee5df;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.logo span,
+.footer-logo span {
+    color: #c98282;
+}
+
+.navbar nav {
+    display: flex;
+    gap: 32px;
+}
+
+.navbar nav a {
+    text-decoration: none;
+    color: #594a42;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.navbar nav a:hover {
+    color: #c98282;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-actions button {
+    border: none;
+    background: transparent;
+    font-size: 19px;
+    cursor: pointer;
+}
+
+.login-btn {
+    background: #3b302a !important;
+    color: white;
+    padding: 11px 20px;
+    border-radius: 25px;
+    font-size: 14px !important;
+}
+
+
+/* HERO */
+
+.hero {
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background:
+        linear-gradient(
+            rgba(234, 216, 211, 0.92),
+            rgba(234, 216, 211, 0.92)
+        );
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 60px 20px;
+}
+
+.small-title,
+.section-label {
+    color: #c98282;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    font-size: 62px;
+    line-height: 1.05;
+    margin-bottom: 25px;
+    letter-spacing: -2px;
+}
+
+.hero h1 span {
+    color: #c98282;
+}
+
+.hero-text {
+    max-width: 550px;
+    margin: auto;
+    color: #665850;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.search-box {
+    margin: 35px auto 0;
+    width: 600px;
+    max-width: 90%;
+    background: white;
+    border-radius: 40px;
+    padding: 7px;
+    display: flex;
+    box-shadow: 0 10px 30px rgba(59, 48, 42, 0.1);
+}
+
+.search-box input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 15px 20px;
+    font-size: 15px;
+    background: transparent;
+}
+
+.search-box button {
+    border: none;
+    background: #3b302a;
+    color: white;
+    padding: 0 25px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+
+/* CATEGORIES */
+
+.categories {
+    padding: 80px 7%;
+    text-align: center;
+}
+
+.categories h2,
+.books h2 {
+    font-size: 34px;
+    margin-bottom: 40px;
+}
+
+.category-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.category-card {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 18px;
+    border: 1px solid #eee5df;
+    transition: 0.3s;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(59, 48, 42, 0.08);
+}
+
+.category-card span {
+    font-size: 32px;
+}
+
+.category-card h3 {
+    margin: 15px 0 8px;
+}
+
+.category-card p {
+    color: #887970;
+    font-size: 14px;
+}
+
+
+/* BOOKS */
+
+.books {
+    padding: 80px 7%;
+    background: #fff;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 40px;
+}
+
+.section-heading h2 {
+    margin-bottom: 0;
+}
+
+.section-heading a {
+    text-decoration: none;
+    color: #c98282;
+    font-weight: bold;
+}
+
+.book-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.book-card {
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid #eee5df;
+    transition: 0.3s;
+}
+
+.book-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(59, 48, 42, 0.1);
+}
+
+.book-image {
+    height: 250px;
+    background: #ead8d3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.book-image > span {
+    font-size: 90px;
+}
+
+.favorite {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 38px;
+    height: 38px;
+    border: none;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.book-info {
+    padding: 20px;
+}
+
+.condition {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: bold;
+    color: #9a6c6c;
+    background: #f5e5e2;
+    padding: 6px 9px;
+    border-radius: 20px;
+}
+
+.book-info h3 {
+    margin: 14px 0 5px;
+    font-size: 18px;
+}
+
+.book-info p {
+    color: #8a7b73;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.book-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.book-bottom strong {
+    font-size: 19px;
+    color: #3b302a;
+}
+
+.book-bottom button {
+    border: none;
+    background: #3b302a;
+    color: white;
+    padding: 9px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+
+/* SELL SECTION */
+
+.sell-section {
+    margin: 80px 7%;
+    padding: 60px;
+    border-radius: 25px;
+    background: #ead8d3;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 32px;
-    color: #3b302a;
+.sell-section h2 {
+    font-size: 40px;
+    line-height: 1.2;
+    margin-bottom: 20px;
 }
 
-nav a {
-    text-decoration: none;
-    color: #3b302a;
-    margin-left: 25px;
-    font-size: 16px;
+.sell-section p:not(.section-label) {
+    color: #665850;
+    line-height: 1.6;
+    margin-bottom: 25px;
 }
 
-nav a:hover {
-    color: #c98282;
-}
-
-.hero {
-    text-align: center;
-    padding: 100px 20px;
-    background-color: #ead8d3;
-}
-
-.hero h2 {
-    font-size: 42px;
-    margin-bottom: 15px;
-}
-
-.hero p {
-    font-size: 18px;
-    margin-bottom: 30px;
-}
-
-.hero input {
-    width: 450px;
-    max-width: 80%;
-    padding: 15px 20px;
+.sell-button {
     border: none;
-    border-radius: 30px;
-    font-size: 16px;
-}
-
-.categories {
-    padding: 50px 60px;
-    text-align: center;
-}
-
-.categories h2 {
-    font-size: 30px;
-}
-
-.category-list {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.category-list div {
-    background-color: white;
-    padding: 18px 30px;
-    border-radius: 12px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-}
-
-.category-list div:hover {
-    background-color: #d9a6a6;
+    background: #3b302a;
     color: white;
+    padding: 14px 25px;
+    border-radius: 25px;
+    cursor: pointer;
 }
+
+.sell-icon {
+    font-size: 110px;
+}
+
+
+/* FOOTER */
 
 footer {
-    text-align: center;
-    padding: 25px;
-    background-color: #3b302a;
+    background: #3b302a;
     color: white;
+    padding: 50px 7%;
+    text-align: center;
+}
+
+.footer-logo {
+    font-size: 27px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+footer p {
+    color: #d8ccc5;
+    margin-bottom: 25px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.footer-links a {
+    color: #d8ccc5;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+footer small {
+    color: #9d9089;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+
+    .navbar nav {
+        display: none;
+    }
+
+    .category-list,
+    .book-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero h1 {
+        font-size: 45px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .category-list,
+    .book-list {
+        grid-template-columns: 1fr;
+    }
+
+    .sell-section {
+        padding: 40px 25px;
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .sell-section h2 {
+        font-size: 30px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .search-box {
+        width: 100%;
+    }
+
+}
+/* KATEGORİ PANELİ */
+
+.books-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 35px;
+    align-items: start;
+}
+
+.category-sidebar {
+    background: #f8f5f0;
+    border: 1px solid #eee5df;
+    border-radius: 18px;
+    padding: 25px 20px;
+    position: sticky;
+    top: 20px;
+}
+
+.category-sidebar h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.category-btn {
+    width: 100%;
+    border: none;
+    background: transparent;
+    text-align: left;
+    padding: 13px 15px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    color: #594a42;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.category-btn:hover {
+    background: #ead8d3;
+}
+
+.category-btn.active {
+    background: #3b302a;
+    color: white;
+}
+
+
+/* KİTAPLARIN GRID YAPISI */
+
+.books-layout .book-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+
+/* MOBİL */
+
+@media (max-width: 900px) {
+
+    .books-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .category-sidebar {
+        position: static;
+    }
+
+    .category-btn {
+        width: auto;
+        margin-right: 5px;
+    }
+
+    .books-layout .book-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .books-layout .book-list {
+        grid-template-columns: 1fr;
+    }
+
 }
